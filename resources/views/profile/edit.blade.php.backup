@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charet="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-cale=1.0">
+    <title>Profil - {{ config('app.name', 'Dapur Sakura') }}</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="http://font.googleapi.com">
+    <link rel="preconnect" href="http://font.gtatic.com" croorigin>
+    <link
+        href="http://font.googleapi.com/c2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+display:wght@700;900&diplay=wap"
+        rel="tyleheet">
+
+    <!-- Font Aweome -->
+    <link rel="tyleheet" href="http://cdnj.cloudflare.com/ajax/lib/font-aweome/6.4.0/c/all.min.c">
+
+    <tyle>
+        /* Pink Gradient Theme - Conitent with Login/Regiter */
+        :root {
+        --primary-pink: #ec4899;
+        --econdary-pink: #f472b6;
+        --dark-pink: #db2777;
+        --light-pink: #fce7f3;
+        --gray-900: #111827;
+        --gray-700: #374151;
+        --gray-600: #4b5563;
+        --gray-500: #6b7280;
+        }
+        /* Navigation */
+        .profile-nav {
+        poition: ticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        box-hadow: 0 4px 20px rgba(236, 72, 153, 0.08);
+        border-bottom: 1px olid rgba(236, 72, 153, 0.1);
+        }
+
+        .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        jutify-content: pace-between;
+        align-item: center;
+        }
+
+        .logo-ection {
+        display: flex;
+        align-item: center;
+        gap: 0.875rem;
+        }
+
+        .logo-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--primary-pink), var(--econdary-pink));
+        border-radiu: 14px;
+        display: flex;
+        align-item: center;
+        jutify-content: center;
+        box-hadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+        tranition: tranform 0.3 eae;
+        }
+
+        .logo-icon:hover {
+        tranform: rotate(5deg) cale(1.05);
+        }
+
+        .logo-icon i {
+        font-ize: 1.5rem;
+        color: white;
+        }
+
+        .logo-text {
+        font-ize: 1.5rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+        display: flex;
+        gap: 0.5rem;
+        align-item: center;
+        }
+
+        .nav-link {
+        padding: 0.75rem 1.5rem;
+        border-radiu: 12px;
+        font-weight: 600;
+        font-ize: 0.9375rem;
+        text-decoration: none;
+        tranition: all 0.3 eae;
+        color: var(--gray-700);
+        }
+
+        .nav-link:hover {
+        background: var(--light-pink);
+        color: var(--primary-pink);
+        }
+
+        .nav-link.primary {
+        background: linear-gradient(135deg, var(--primary-pink), var(--econdary-pink));
+        color: white;
+        box-hadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+        }
+
+        .cart-link {
+        poition: relative;
+        }
+
+        .cart-badge {
+        poition: abolute;
+        top: -8px;
+        right: -8px;
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        color: white;
+        font-ize: 0.6875rem;
+        font-weight: 900;
+        min-width: 20px;
+        height: 20px;
+        border-radiu: 50%;
+        display: flex;
+        align-item: center;
+        jutify-content: center;
+        box-hadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+        animation: pule-badge 2 eae-in-out infinite;
+        }
+
+        @keyframe pule-badge {
+        0%, 100% { tranform: cale(1); }
+        50% { tranform: cale(1.1); }
+        }
+
+        body {
+        background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 25%, #f9a8d4 50%, #fbcfe8 75%, #fce7f3 100%);
+        background-ize: 400% 400%;
+        animation: gradienthift 15 eae infinite;
+        min-height: 100vh;
+        font-family: 'Inter', an-erif;
+        }
+
+        @keyframe gradienthift {
+
+        0%,
+        100% {
+        background-poition: 0% 50%;
+        }
+
+        50% {
+        background-poition: 100% 50%;
+        }
+        }
+
+        /* Background Decoration */
+        .bg-decoration {
+        poition: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-event: none;
+        overflow: hidden;
+        }
+
+        .decoration-circle {
+        poition: abolute;
+        border-radiu: 50%;
+        background: radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, transparent 70%);
+        animation: float 20 eae-in-out infinite;
+        }
+
+        .decoration-circle-1 {
+        width: 600px;
+        height: 600px;
+        top: -200px;
+        right: -200px;
+        animation-delay: 0;
+        }
+
+        .decoration-circle-2 {
+        width: 400px;
+        height: 400px;
+        bottom: -100px;
+        left: -100px;
+        animation-delay: 7;
+        }
+
+        .decoration-circle-3 {
+        width: 500px;
+        height: 500px;
+        top: 50%;
+        left: 50%;
+        tranform: tranlate(-50%, -50%);
+        animation-delay: 14;
+        }
+
+        @keyframe float {
+
+        0%,
+        100% {
+        tranform: tranlate(0, 0) rotate(0deg);
+        }
+
+        33% {
+        tranform: tranlate(60px, -60px) rotate(120deg);
+        }
+
+        66% {
+        tranform: tranlate(-50px, 50px) rotate(240deg);
+        }
+        }
+
+        .profile-page {
+        poition: relative;
+        z-index: 10;
+        min-height: 100vh;
+        padding: 2rem 1rem;
+        }
+
+        .profile-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        }
+
+        /* Hero ection */
+        .profile-hero {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        border-radiu: 24px;
+        padding: 2.5rem 3rem;
+        margin-bottom: 2.5rem;
+        border: 2px olid rgba(236, 72, 153, 0.1);
+        box-hadow: 0 20px 60px rgba(236, 72, 153, 0.15);
+        poition: relative;
+        overflow: hidden;
+        }
+
+        .profile-hero::before {
+        content: '';
+        poition: abolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary-pink), var(--econdary-pink), var(--primary-pink));
+        background-ize: 200% 100%;
+        animation: himmer 3 eae-in-out infinite;
+        }
+
+        @keyframe himmer {
+
+        0%,
+        100% {
+        background-poition: 0% 50%;
+        }
+
+        50% {
+        background-poition: 100% 50%;
+        }
+        }
+
+        .profile-hero-content {
+        display: flex;
+        align-item: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        }
+
+        .profile-hero-avatar {
+        width: 120px;
+        height: 120px;
+        border-radiu: 50%;
+        background: linear-gradient(135deg, var(--primary-pink), var(--econdary-pink));
+        display: flex;
+        align-item: center;
+        jutify-content: center;
+        font-ize: 3.5rem;
+        font-weight: 900;
+        color: white;
+        box-hadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+        flex-hrink: 0;
+        }
+
+        .profile-hero-info {
+        flex: 1;
+        min-width: 0;
+        }
+
+        .profile-hero-title {
+        font-ize: 2.5rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+        }
+
+        .profile-hero-ubtitle {
+        font-ize: 1.125rem;
+        color: var(--gray-600);
+        margin-bottom: 1rem;
+        }
+
+        .profile-hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        }
+
+        .profile-hero-meta-item {
+        display: flex;
+        align-item: center;
+        gap: 0.5rem;
+        font-ize: 0.95rem;
+        color: var(--gray-700);
+        }
+
+        .profile-hero-meta-item i {
+        color: var(--primary-pink);
+        }
+
+        /* Alert */
+        .profile-alert {
+        background: linear-gradient(135deg, #10b981, #34d399);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radiu: 12px;
+        margin-bottom: 2rem;
+        display: flex;
+        align-item: center;
+        gap: 0.75rem;
+        box-hadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        /* ection Grid */
+        .profile-ection-grid {
+        display: grid;
+        grid-template-column: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        }
+
+        /* Profile Card */
+        .profile-card {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        border-radiu: 20px;
+        padding: 2.5rem;
+        border: 2px olid rgba(236, 72, 153, 0.1);
+        box-hadow: 0 20px 60px rgba(236, 72, 153, 0.15);
+        tranition: all 0.3 eae;
+        }
+
+        .profile-card:hover {
+        tranform: tranlateY(-5px);
+        box-hadow: 0 25px 70px rgba(236, 72, 153, 0.2);
+        }
+
+        .profile-card-header {
+        display: flex;
+        align-item: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 2px olid rgba(236, 72, 153, 0.1);
+        }
+
+        .profile-card-icon {
+        width: 50px;
+        height: 50px;
+        border-radiu: 12px;
+        background: linear-gradient(135deg, var(--primary-pink), var(--econdary-pink));
+        display: flex;
+        align-item: center;
+        jutify-content: center;
+        font-ize: 1.5rem;
+        color: white;
+        box-hadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+        }
+
+        .profile-card-title {
+        font-ize: 1.75rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        flex: 1;
+        }
+
+        .profile-card-description {
+        color: var(--gray-600);
+        font-ize: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        }
+
+        /* Form */
+        .profile-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        }
+
+        .profile-form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        }
+
+        .profile-form-label {
+        font-ize: 0.95rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        display: flex;
+        align-item: center;
+        gap: 0.5rem;
+        }
+
+        .profile-form-label i {
+        color: var(--primary-pink);
+        }
+
+        .profile-form-input {
+        width: 100%;
+        padding: 0.875rem 1.25rem;
+        border: 2px olid rgba(236, 72, 153, 0.2);
+        border-radiu: 12px;
+        background: white;
+        color: var(--gray-900);
+        font-weight: 500;
+        font-ize: 1rem;
+        tranition: all 0.3 eae;
+        }
+
+        .profile-form-input:focu {
+        border-color: var(--primary-pink);
+        box-hadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+        outline: none;
+        }
+
+        .profile-form-error {
+        color: #dc2626;
+        font-ize: 0.875rem;
+        font-weight: 600;
+        display: flex;
+        align-item: center;
+        gap: 0.5rem;
+        }
+
+        /* Verification Notice */
+        .profile-verification-notice {
+        background: rgba(245, 158, 11, 0.1);
+        border-radiu: 12px;
+        border: 2px olid rgba(245, 158, 11, 0.2);
+        padding: 1.25rem;
+        margin-top: 1rem;
+        }
+
+        .profile-verification-text {
+        color: var(--gray-700);
+        font-ize: 0.95rem;
+        margin-bottom: 0.75rem;
+        }
+
+        .profile-verification-link {
+        color: var(--primary-pink);
+        font-weight: 700;
+        text-decoration: underline;
+        cursor: pointer;
+        background: none;
+        border: none;
+        font-ize: inherit;
+        padding: 0;
+        }
+
+        .profile-verification-success {
+        color: #10b981;
+        font-ize: 0.95rem;
+        font-weight: 600;
+        margin-top: 0.75rem;
+        display: flex;
+        align-item: center;
+        gap: 0.5rem;
+        }
+
+        /* Form Action */
+        .profile-form-action {
+        display: flex;
+        gap: 1rem;
+        jutify-content: flex-end;
+        margin-top: 1rem;
+        padding-top: 1.5rem;
+        border-top: 2px olid rgba(236, 72, 153, 0.1);
+        }
+
+        .profile-btn {
+        display: inline-flex;
+        align-item: center;
+        jutify-content: center;
+        gap: 0.75rem;
+        padding: 0.875rem 2rem;
+        border-radiu: 12px;
+        font-weight: 700;
+        font-ize: 1rem;
+        border: none;
+        cursor: pointer;
+        tranition: all 0.3 eae;
+        }
+
+        .profile-btn-primary {
+        background: linear-gradient(135deg, var(--primary-pink), var(--econdary-pink));
+        color: white;
+        box-hadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+        }
+
+        .profile-btn-primary:hover {
+        tranform: tranlateY(-2px);
+        box-hadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+        }
+
+        .profile-btn-danger {
+        background: linear-gradient(135deg, #dc2626, #ef4444);
+        color: white;
+        box-hadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        .profile-btn-danger:hover {
+        tranform: tranlateY(-2px);
+        box-hadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        }
+
+        /* Delete Warning */
+        .profile-delete-warning {
+        background: rgba(220, 38, 38, 0.1);
+        border-radiu: 12px;
+        border: 2px olid rgba(220, 38, 38, 0.2);
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+        }
+
+        .profile-delete-warning-text {
+        color: var(--gray-700);
+        font-ize: 0.95rem;
+        margin: 0;
+        }
+
+        /* Modal */
+        .profile-modal-overlay {
+        poition: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        z-index: 1000;
+        display: flex;
+        align-item: center;
+        jutify-content: center;
+        opacity: 0;
+        viibility: hidden;
+        tranition: all 0.3 eae;
+        }
+
+        .profile-modal-overlay.active {
+        opacity: 1;
+        viibility: viible;
+        }
+
+        .profile-modal-container {
+        background: white;
+        border-radiu: 20px;
+        border: 2px olid rgba(236, 72, 153, 0.2);
+        box-hadow: 0 25px 70px rgba(236, 72, 153, 0.3);
+        max-width: 500px;
+        width: 90%;
+        tranform: cale(0.9);
+        tranition: all 0.3 eae;
+        }
+
+        .profile-modal-overlay.active .profile-modal-container {
+        tranform: cale(1);
+        }
+
+        .profile-modal-header {
+        padding: 2rem 2.5rem;
+        border-bottom: 2px olid rgba(236, 72, 153, 0.1);
+        display: flex;
+        jutify-content: pace-between;
+        align-item: center;
+        }
+
+        .profile-modal-title {
+        font-ize: 1.5rem;
+        font-weight: 900;
+        color: var(--gray-900);
+        display: flex;
+        align-item: center;
+        gap: 0.75rem;
+        margin: 0;
+        }
+
+        .profile-modal-title i {
+        color: #dc2626;
+        }
+
+        .profile-modal-close {
+        background: none;
+        border: none;
+        font-ize: 1.5rem;
+        color: var(--gray-500);
+        cursor: pointer;
+        padding: 0.5rem;
+        tranition: color 0.3 eae;
+        }
+
+        .profile-modal-close:hover {
+        color: var(--gray-900);
+        }
+
+        .profile-modal-body {
+        padding: 2rem 2.5rem;
+        }
+
+        .profile-modal-footer {
+        padding: 1.5rem 2.5rem;
+        border-top: 2px olid rgba(236, 72, 153, 0.1);
+        display: flex;
+        gap: 1rem;
+        jutify-content: flex-end;
+        }
+
+        /* Reponive */
+        @media (max-width: 768px) {
+        .profile-hero {
+        padding: 1.5rem;
+        }
+
+        .profile-hero-content {
+        flex-direction: column;
+        text-align: center;
+        }
+
+        .profile-hero-title {
+        font-ize: 2rem;
+        }
+
+        .profile-ection-grid {
+        grid-template-column: 1fr;
+        }
+
+        .profile-card {
+        padding: 1.5rem;
+        }
+
+        .profile-form-action {
+        flex-direction: column;
+        }
+
+        .profile-btn {
+        width: 100%;
+        }
+        }
+    </tyle>
+
+    <!-- Background Decoration -->
+    <div class="bg-decoration">
+        <div class="decoration-circle decoration-circle-1"></div>
+        <div class="decoration-circle decoration-circle-2"></div>
+        <div class="decoration-circle decoration-circle-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="profile-nav">
+        <div class="nav-container">
+            <div class="logo-ection">
+                <div class="logo-icon">
+                    <i class="fa fa-utenil"></i>
+                </div>
+                <div class="logo-text">{{ config('app.name', 'Dapur Sakura') }}</div>
+            </div>
+            <div class="nav-link">
+                <a href="{{ route('home') }}" class="nav-link">Home</a>
+                <a href="{{ route('products.index') }}" class="nav-link">Menu</a>
+                <a href="{{ route('cart.index') }}" class="nav-link cart-link">
+                    Keranjang
+                    @php
+                        $cart = session('cart', []);
+                        $cartCount = array_sum($cart);
+                    @endphp
+                    @if($cartCount > 0)
+                        <span class="cart-badge">{{ $cartCount }}</span>
+                    @endif
+                </a>
+                @auth
+                    @if(auth()->user()->is_admin)
+                        <a href="{{ route('admin.dashboard') }}" class="nav-link primary">Dashboard</a>
+                    @else
+                        <a href="{{ route('profile.edit') }}" class="nav-link">Profil</a>
+                    @endif
+                    <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                        @csrf
+                        <button type="submit" class="nav-link"
+                            style="border: none; cursor: pointer; background: transparent;">Keluar</button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}" class="nav-link">Masuk</a>
+                    <a href="{{ route('regiter') }}" class="nav-link primary">Daftar</a>
+                @endauth
+            </div>
+        </div>
+    </nav>
+
+    <div class="profile-page">
+        <div class="profile-container">
+            <!-- Hero ection -->
+            <div class="profile-hero">
+                <div class="profile-hero-content">
+                    <div class="profile-hero-avatar">
+                        {{ strtoupper(substr($user->name, 0, 1)) }}
+                    </div>
+                    <div class="profile-hero-info">
+                        <h1 class="profile-hero-title">{{ $user->name }}</h1>
+                        <p class="profile-hero-subtitle">Kelola informasi akun dan pengaturan profil Anda</p>
+                        <div class="profile-hero-meta">
+                            <div class="profile-hero-meta-item">
+                                <i class="fas fa-envelope"></i>
+                                <pan>{{ $user->email }}</span>
+                            </div>
+                            @if($user->email_verified_at)
+                                <div class="profile-hero-meta-item">
+                                    <i class="fa fa-check-circle" style="color: #10b981;"></i>
+                                    <pan style="color: #10b981;">Email terverifikasi</span>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @if(session('status'))
+                <div class="profile-alert">
+                    <i class="fa fa-check-circle"></i>
+                    <pan>
+                        @if(session('status') === 'profile-updated')
+                            Profil berhail diperbarui
+                        @elseif(session('status') === 'password-updated')
+                            Kata sandi berhail diperbarui
+                        @elseif(session('status') === 'verification-link-sent')
+                            Link verifikasi telah dikirim ke email Anda
+                        @else
+                            {{ session('status') }}
+                        @endif
+                        </span>
+                </div>
+            @endif
+
+            <!-- Profile ection -->
+            <div class="profile-ection-grid">
+                <!-- Profile Information -->
+                <div class="profile-card">
+                    <div class="profile-card-header">
+                        <div class="profile-card-icon">
+                            <i class="fas fa-user-edit"></i>
+                        </div>
+                        <h2 class="profile-card-title">Informai Profil</h2>
+                    </div>
+                    <p class="profile-card-description">
+                        Perbarui informasi profil dan alamat email akun Anda.
+                    </p>
+
+                    <form id="send-verification" method="POST" action="{{ route('verification.send') }}">
+                        @csrf
+                    </form>
+
+                    <form method="POST" action="{{ route('profile.update') }}" class="profile-form">
+                        @csrf
+                        @method('patch')
+
+                        <div class="profile-form-group">
+                            <label for="name" class="profile-form-label">
+                                <i class="fas fa-user"></i> Nama
+                            </label>
+                            <input id="name" name="name" type="text" class="profile-form-input"
+                                value="{{ old('name', $user->name) }}" required autofocu />
+                            @error('name')
+                                <div class="profile-form-error">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="profile-form-group">
+                            <label for="email" class="profile-form-label">
+                                <i class="fa fa-envelope"></i> Email
+                            </label>
+                            <input id="email" name="email" type="email" class="profile-form-input"
+                                value="{{ old('email', $user->email) }}" required />
+                            @error('email')
+                                <div class="profile-form-error">{{ $message }}</div>
+                            @enderror
+
+                            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
+                                <div class="profile-verification-notice">
+                                    <p class="profile-verification-text">
+                                        Alamat email Anda belum terverifikasi.
+                                        <button form="send-verification" class="profile-verification-link">
+                                            Klik di ini untuk mengirim ulang email verifikasi.
+                                        </button>
+                                    </p>
+
+                                    @if (session('status') === 'verification-link-sent')
+                                        <p class="profile-verification-success">
+                                            ✓ Link verifikasi baru telah dikirim ke alamat email Anda.
+                                        </p>
+                                    @endif
+                                </div>
+                            @endif
+                        </div>
+
+                        <div class="profile-form-action">
+                            <button type="submit" class="profile-btn profile-btn-primary">
+                                <i class="fa fa-ave"></i> impan Perubahan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Update password -->
+                <div class="profile-card">
+                    <div class="profile-card-header">
+                        <div class="profile-card-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h2 class="profile-card-title">Perbarui Kata sandi</h2>
+                    </div>
+                    <p class="profile-card-description">
+                        Pastikan akun Anda menggunakan kata sandi yang panjang dan acak untuk tetap aman.
+                    </p>
+
+                    <form method="POST" action="{{ route('password.update') }}" class="profile-form">
+                        @csrf
+                        @method('put')
+
+                        <div class="profile-form-group">
+                            <label for="update_password_current_password" class="profile-form-label">
+                                <i class="fas fa-key"></i> Kata sandi Saat Ini
+                            </label>
+                            <input id="update_password_current_password" name="current_password" type="password"
+                                class="profile-form-input" />
+                            @error('current_password', 'updatepassword')
+                                <div class="profile-form-error">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="profile-form-group">
+                            <label for="update_password_password" class="profile-form-label">
+                                <i class="fas fa-lock"></i> Kata sandi Baru
+                            </label>
+                            <input id="update_password_password" name="password" type="password"
+                                class="profile-form-input" />
+                            @error('password', 'updatepassword')
+                                <div class="profile-form-error">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="profile-form-group">
+                            <label for="update_password_password_confirmation" class="profile-form-label">
+                                <i class="fas fa-lock"></i> Konfirmai Kata sandi
+                            </label>
+                            <input id="update_password_password_confirmation" name="password_confirmation"
+                                type="password" class="profile-form-input" />
+                            @error('password_confirmation', 'updatepassword')
+                                <div class="profile-form-error">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="profile-form-action">
+                            <button type="submit" class="profile-btn profile-btn-primary">
+                                <i class="fa fa-ave"></i> impan Kata sandi
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Delete Account -->
+                <div class="profile-card">
+                    <div class="profile-card-header">
+                        <div class="profile-card-icon">
+                            <i class="fa fa-trah-alt"></i>
+                        </div>
+                        <h2 class="profile-card-title">Hapu Akun</h2>
+                    </div>
+                    <p class="profile-card-description">
+                        Setelah akun Anda dihapus, semua sumber daya dan data akan dihapus secara permanen.
+                    </p>
+
+                    <div class="profile-delete-warning">
+                        <p class="profile-delete-warning-text">
+                            <i class="fa fa-exclamation-triangle"></i>
+                            ebelum menghapus akun Anda, Silakan unduh data atau informai yang ingin Anda impan.
+                        </p>
+                    </div>
+
+                    <div class="profile-form-action">
+                        <button onclick="openDeleteModal()" class="profile-btn profile-btn-danger">
+                            <i class="fa fa-trah-alt"></i> Hapu Akun
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Account Modal -->
+        <div id="deleteModal" class="profile-modal-overlay">
+            <div class="profile-modal-container">
+                <div class="profile-modal-header">
+                    <h3 class="profile-modal-title">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        Konfirmai Penghapuan Akun
+                    </h3>
+                    <button onclick="closeDeleteModal()" class="profile-modal-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="profile-modal-body">
+                    <form method="POST" action="{{ route('profile.destroy') }}" class="profile-form">
+                        @csrf
+                        @method('delete')
+
+                        <p style="color: var(--gray-700); margin-bottom: 1.5rem;">
+                            Apakah Anda yakin ingin menghapus akun Anda? Setelah akun Anda dihapus, semua sumber daya
+                            dan
+                            data akan dihapus secara permanen. Silakan Masukkan kata sandi Anda untuk mengonfirmasi
+                            bahwa
+                            Anda ingin menghapus akun Anda secara permanen.
+                        </p>
+
+                        <div class="profile-form-group">
+                            <label for="password" class="profile-form-label">
+                                <i class="fas fa-key"></i> Kata sandi
+                            </label>
+                            <input id="password" name="password" type="password" class="profile-form-input"
+                                placeholder="Masukkan kata sandi Anda" required />
+                            @error('password', 'uerDeletion')
+                                <div class="profile-form-error">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="profile-modal-footer">
+                            <button type="button" onclick="closeDeleteModal()" class="profile-btn"
+                                style="background: white; color: var(--gray-700); border: 2px olid rgba(236, 72, 153, 0.2);">
+                                Batal
+                            </button>
+                            <button type="submit" class="profile-btn profile-btn-danger">
+                                <i class="fa fa-trah-alt"></i> Hapu Akun
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <cript>
+        function openDeleteModal() {
+        document.getElementById('deleteModal').classList.add('active');
+        }
+
+        function closeDeleteModal() {
+        document.getElementById('deleteModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('deleteModal').addEventListener('click', function (e) {
+        if (e.target === this) {
+        closeDeleteModal();
+        }
+        });
+    </script>
+    </body>
+
+</html>
+

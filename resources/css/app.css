@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'luxury-dashboard.css';
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .96; }
+}
+.animate-pulse-slow { animation: pulse-slow 6s ease-in-out infinite; }
+
+/* Simple skeleton loading utility */
+.skeleton {
+  @apply bg-brand-100 animate-pulse rounded;
+}

@@ -1,0 +1,623 @@
+/* Digital Kitchen Interface Styles - Override Tailwind */
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%) !important;
+}
+
+.digital-kitchen-interface {
+    min-height: 100vh !important;
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%) !important;
+    position: relative !important;
+    overflow-x: hidden !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+/* Interface Background */
+.interface-background {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+}
+
+.interface-shapes {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.interface-shape {
+    position: absolute !important;
+    border-radius: 50% !important;
+    background: linear-gradient(45deg, rgba(236, 72, 153, 0.03), rgba(244, 114, 182, 0.03)) !important;
+    animation: interfaceFloat 20s ease-in-out infinite !important;
+}
+
+.interface-shape.shape-1 {
+    width: 300px !important;
+    height: 300px !important;
+    top: 10% !important;
+    right: 5% !important;
+    animation-delay: 0s !important;
+}
+
+.interface-shape.shape-2 {
+    width: 200px !important;
+    height: 200px !important;
+    top: 60% !important;
+    left: 5% !important;
+    animation-delay: 7s !important;
+}
+
+.interface-shape.shape-3 {
+    width: 150px !important;
+    height: 150px !important;
+    bottom: 20% !important;
+    right: 20% !important;
+    animation-delay: 14s !important;
+}
+
+.interface-gradient {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.8) 50%, rgba(255, 255, 255, 0.95) 100%) !important;
+}
+
+/* Digital Interface Container */
+.digital-interface-container {
+    position: relative !important;
+    z-index: 2 !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 2rem !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Top Interface Navigation */
+.top-interface-nav {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 1rem 0 !important;
+    margin-bottom: 2rem !important;
+}
+
+.nav-left {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.logo-section {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+}
+
+.logo-circle {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #ec4899, #f472b6) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: white !important;
+    font-size: 1.2rem !important;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3) !important;
+}
+
+.logo-text {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #1a202c !important;
+    letter-spacing: 0.02em !important;
+}
+
+.nav-right {
+    display: flex !important;
+    gap: 1rem !important;
+}
+
+.nav-icon-btn {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    border: none !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #6b7280 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.nav-icon-btn:hover {
+    background: #ec4899 !important;
+    color: white !important;
+    transform: scale(1.05) !important;
+}
+
+/* Main Interface Content */
+.main-interface-content {
+    flex: 1 !important;
+    display: grid !important;
+    grid-template-columns: 2fr 1fr !important;
+    gap: 3rem !important;
+    align-items: center !important;
+    margin-bottom: 3rem !important;
+}
+
+/* Featured Dish Section */
+.featured-dish-section {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+}
+
+.dish-indicator {
+    margin-bottom: 1rem !important;
+}
+
+.indicator-text {
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    color: #6b7280 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+.dish-showcase {
+    display: flex !important;
+    gap: 3rem !important;
+    align-items: center !important;
+}
+
+.dish-indicators {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+}
+
+.indicator-dot {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background: #d1d5db !important;
+    transition: all 0.3s ease !important;
+}
+
+.indicator-dot.active {
+    background: #ec4899 !important;
+    transform: scale(1.3) !important;
+}
+
+.dish-image-container {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+.dish-image-frame {
+    position: relative !important;
+    width: 300px !important;
+    height: 300px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    background: #f8fafc !important;
+}
+
+.dish-image-frame:hover {
+    transform: scale(1.02) !important;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15) !important;
+}
+
+.dish-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: all 0.5s ease !important;
+}
+
+.dish-info {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+}
+
+.dish-title {
+    font-size: 3rem !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    color: #1a202c !important;
+    margin: 0 !important;
+    letter-spacing: 0.02em !important;
+}
+
+.dish-actions {
+    display: flex !important;
+    gap: 1rem !important;
+    align-items: center !important;
+}
+
+.action-btn {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    padding: 0.75rem 1.5rem !important;
+    border: none !important;
+    border-radius: 25px !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.play-btn {
+    background: transparent !important;
+    color: #6b7280 !important;
+    border: 1px solid #d1d5db !important;
+}
+
+.play-btn:hover {
+    background: #f3f4f6 !important;
+    color: #374151 !important;
+}
+
+.order-btn {
+    background: linear-gradient(135deg, #ec4899, #f472b6) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3) !important;
+}
+
+.order-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.4) !important;
+}
+
+/* Product Info Panel */
+.product-info-panel {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(20px) !important;
+    border-radius: 20px !important;
+    padding: 2rem !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+    height: fit-content !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.panel-tabs {
+    display: flex !important;
+    gap: 0.5rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.tab-btn {
+    padding: 0.5rem 1rem !important;
+    border: none !important;
+    background: transparent !important;
+    color: #6b7280 !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    border-radius: 10px !important;
+}
+
+.tab-btn.active {
+    background: #ec4899 !important;
+    color: white !important;
+}
+
+.panel-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+}
+
+.rating-section {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.rating-box {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24) !important;
+    color: white !important;
+    padding: 1rem 1.5rem !important;
+    border-radius: 15px !important;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3) !important;
+}
+
+.chef-info {
+    text-align: center !important;
+}
+
+.chef-name {
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    color: #1a202c !important;
+    margin-bottom: 0.25rem !important;
+}
+
+.chef-title {
+    font-size: 0.875rem !important;
+    color: #6b7280 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.chef-description {
+    font-size: 0.8rem !important;
+    color: #4a5568 !important;
+    line-height: 1.4 !important;
+    font-style: italic !important;
+}
+
+.engagement-section {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.engagement-btn {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    padding: 0.5rem 1rem !important;
+    border: none !important;
+    background: #f3f4f6 !important;
+    color: #6b7280 !important;
+    border-radius: 20px !important;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.engagement-btn:hover {
+    background: #ec4899 !important;
+    color: white !important;
+}
+
+.decorative-element {
+    text-align: center !important;
+    color: #10b981 !important;
+    font-size: 1.5rem !important;
+}
+
+/* Bottom Interface Navigation */
+.bottom-interface-nav {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    padding: 2rem 0 !important;
+}
+
+.nav-arrows {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 1rem !important;
+}
+
+.nav-arrow {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    border: none !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #6b7280 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.nav-arrow:hover {
+    background: #ec4899 !important;
+    color: white !important;
+    transform: scale(1.1) !important;
+}
+
+.dish-carousel {
+    display: flex !important;
+    gap: 1rem !important;
+    overflow-x: auto !important;
+    padding: 1rem 0 !important;
+    justify-content: center !important;
+}
+
+.dish-thumbnail {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    padding: 1rem !important;
+    border-radius: 15px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    min-width: 120px !important;
+}
+
+.dish-thumbnail.active {
+    background: white !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.thumbnail-image {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.thumbnail-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.thumbnail-placeholder {
+    width: 100% !important;
+    height: 100% !important;
+    background: #f3f4f6 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #9ca3af !important;
+}
+
+.thumbnail-name {
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    color: #6b7280 !important;
+    text-align: center !important;
+}
+
+.icon-navigation {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 1rem !important;
+}
+
+.icon-btn {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    border: none !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #6b7280 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.icon-btn:hover {
+    background: #ec4899 !important;
+    color: white !important;
+    transform: scale(1.05) !important;
+}
+
+/* Animations */
+@keyframes interfaceFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .main-interface-content {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        text-align: center !important;
+    }
+    
+    .dish-showcase {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        align-items: center !important;
+    }
+    
+    .dish-image-frame {
+        width: 250px !important;
+        height: 250px !important;
+    }
+    
+    .dish-title {
+        font-size: 2.5rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .digital-interface-container {
+        padding: 1rem !important;
+    }
+    
+    .dish-image-frame {
+        width: 200px !important;
+        height: 200px !important;
+    }
+    
+    .dish-title {
+        font-size: 2rem !important;
+    }
+    
+    .dish-actions {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+    
+    .action-btn {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    
+    .product-info-panel {
+        padding: 1.5rem !important;
+    }
+    
+    .dish-carousel {
+        gap: 0.5rem !important;
+    }
+    
+    .dish-thumbnail {
+        min-width: 100px !important;
+        padding: 0.75rem !important;
+    }
+    
+    .thumbnail-image {
+        width: 50px !important;
+        height: 50px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .dish-image-frame {
+        width: 150px !important;
+        height: 150px !important;
+    }
+    
+    .dish-title {
+        font-size: 1.5rem !important;
+    }
+    
+    .logo-text {
+        font-size: 1.2rem !important;
+    }
+    
+    .product-info-panel {
+        padding: 1rem !important;
+    }
+    
+    .engagement-section {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+    
+    .engagement-btn {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+}
