@@ -23,6 +23,16 @@ use App\Http\Controllers\OrderManagementController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DriverLocationController;
 use App\Http\Controllers\DriverController;
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/db-migrate-sakura', function () {
+	try {
+		Artisan::call('migrate', ['--force' => true]);
+		return "Migrasi Berhasil! Semua tabel sudah terbuat di Supabase.";
+	} catch (\Exception $e) {
+		return "Gagal Migrasi: " . $e->getMessage();
+	}
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
