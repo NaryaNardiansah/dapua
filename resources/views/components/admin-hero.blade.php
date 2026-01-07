@@ -79,6 +79,7 @@
 .hero-text-content {
     flex: 1;
     color: white;
+    text-align: left;
 }
 
 .hero-title {

@@ -100,4 +100,64 @@ class DashboardController extends Controller
             'categoryValuesJson'
         ));
     }
+
+    public function exportPdf(Request $request)
+    {
+        $today = now()->toDateString();
+        $ordersToday = Order::whereDate('created_at', $today)->count();
+        $revenueToday = Order::whereDate('created_at', $today)->sum('grand_total');
+
+        // Revenue Weekly
+        $startOfWeek = now()->startOfWeek();
+        $revenueWeekly = Order::where('created_at', '>=', $startOfWeek)->sum('grand_total');
+        $ordersWeekly = Order::where('created_at', '>=', $startOfWeek)->count();
+
+        // Revenue Monthly
+        $startOfMonth = now()->startOfMonth();
+        $revenueMonthly = Order::where('created_at', '>=', $startOfMonth)->sum('grand_total');
+        $ordersMonthly = Order::where('created_at', '>=', $startOfMonth)->count();
+
+        $totalOrders = Order::count();
+        $totalRevenue = Order::sum('grand_total');
+        $totalProducts = Product::count();
+        $totalUsers = User::count();
+        $totalReviews = Review::count();
+
+        // Top 5 products
+        $topProducts = Product::select('products.*', DB::raw('COALESCE(SUM(order_items.quantity),0) as sold'))
+            ->leftJoin('order_items', 'order_items.product_id', '=', 'products.id')
+            ->groupBy('products.id')
+            ->orderByDesc('sold')
+            ->limit(5)
+            ->get();
+
+        // Recent Orders
+        $latestOrders = Order::latest()->limit(5)->get();
+
+        // Orders by Status
+        $statusDistribution = Order::select('status', DB::raw('count(*) as count'))
+            ->groupBy('status')
+            ->get();
+
+        $data = [
+            'reportDate' => now()->format('d F Y H:i'),
+            'ordersToday' => $ordersToday,
+            'revenueToday' => $revenueToday,
+            'ordersWeekly' => $ordersWeekly,
+            'revenueWeekly' => $revenueWeekly,
+            'ordersMonthly' => $ordersMonthly,
+            'revenueMonthly' => $revenueMonthly,
+            'totalOrders' => $totalOrders,
+            'totalRevenue' => $totalRevenue,
+            'totalProducts' => $totalProducts,
+            'totalUsers' => $totalUsers,
+            'totalReviews' => $totalReviews,
+            'topProducts' => $topProducts,
+            'latestOrders' => $latestOrders,
+            'statusDistribution' => $statusDistribution
+        ];
+
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.reports.dashboard-pdf', $data);
+        return $pdf->download('Laporan_Dashboard_Sakura_' . now()->format('Ymd_His') . '.pdf');
+    }
 }

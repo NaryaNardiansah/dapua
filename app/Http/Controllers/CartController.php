@@ -67,4 +67,19 @@ class CartController extends Controller
 		$request->session()->put('cart', $cart);
 		return back()->with('status', 'Produk dihapus dari keranjang');
 	}
+
+	public function update(Request $request, Product $product)
+	{
+		$qty = (int) $request->input('quantity', 1);
+
+		if ($qty <= 0) {
+			return $this->remove($request, $product);
+		}
+
+		$cart = $request->session()->get('cart', []);
+		$cart[$product->id] = $qty;
+		$request->session()->put('cart', $cart);
+
+		return back()->with('status', 'Jumlah produk berhasil diperbarui');
+	}
 }

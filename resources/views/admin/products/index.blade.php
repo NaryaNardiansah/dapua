@@ -87,6 +87,10 @@
                         <a href="{{ route('admin.products.index') }}" class="modern-btn secondary" title="Reset">
                             <i class="fas fa-redo"></i>
                         </a>
+                        <a href="{{ route('admin.products.export', ['format' => 'pdf']) }}" class="modern-btn info">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>Export PDF</span>
+                        </a>
                         <a href="{{ route('admin.products.create') }}" class="modern-btn success">
                             <i class="fas fa-plus"></i>
                             <span>Tambah</span>

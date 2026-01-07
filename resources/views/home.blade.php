@@ -968,8 +968,9 @@
         <nav class="home-nav">
             <div class="nav-container">
                 <div class="logo-section">
-                    <div class="logo-icon">
-                        <i class="fas fa-utensils"></i>
+                    <div class="logo-icon" style="overflow: hidden;">
+                        <img src="{{ asset('images/logo-sakura.jpg') }}" alt="Logo"
+                            style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="logo-text">{{ config('app.name', 'Dapur Sakura') }}</div>
                 </div>
@@ -1083,7 +1084,7 @@
                 <div class="stats-grid">
                     <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
                         <div class="stat-icon">
-                            <i class="fas fa-utensils"></i>
+                            <i class="fas fa-list-ul"></i>
                         </div>
                         <div class="stat-number">{{ $allProducts->count() }}+</div>
                         <div class="stat-label">Menu Tersedia</div>
@@ -1130,7 +1131,7 @@
                                     <img src="{{ Storage::url($category->image) }}"
                                         class="w-full h-full object-cover rounded-full" alt="{{ $category->name }}">
                                 @else
-                                    <i class="fas fa-utensils"></i>
+                                    <i class="fas fa-cookie-bite"></i>
                                 @endif
                             </div>
                             <h3 class="category-name">{{ $category->name }}</h3>
@@ -1310,6 +1311,81 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Footer Section -->
+            <footer class="footer-section"
+                style="background: white; border-top: 1px solid rgba(236, 72, 153, 0.1); padding: 4rem 2rem 2rem;">
+                <div class="max-w-7xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8"
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                        <div class="footer-col" style="grid-column: span 1;">
+                            <div class="footer-logo"
+                                style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+                                <div
+                                    style="width: 45px; height: 45px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.2);">
+                                    <img src="{{ asset('images/logo-sakura.jpg') }}" alt="Logo"
+                                        style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <span
+                                    style="font-size: 1.5rem; font-weight: 900; background: linear-gradient(135deg, #ec4899, #db2777); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Dapur
+                                    Sakura</span>
+                            </div>
+                            <p style="color: #6b7280; line-height: 1.6; margin-bottom: 1.5rem;">Menghidangkan kelezatan
+                                masakan rumahan autentik dengan bahan pilihan terbaik untuk keluarga Anda.</p>
+                            <div class="social-links" style="display: flex; gap: 1rem;">
+                                <a href="#"
+                                    style="width: 35px; height: 35px; border-radius: 50%; background: #fce7f3; color: #ec4899; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a href="#"
+                                    style="width: 35px; height: 35px; border-radius: 50%; background: #fce7f3; color: #ec4899; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i
+                                        class="fab fa-instagram"></i></a>
+                                <a href="#"
+                                    style="width: 35px; height: 35px; border-radius: 50%; background: #fce7f3; color: #ec4899; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i
+                                        class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1.1rem; font-weight: 800; color: #1f2937; margin-bottom: 1.5rem;">Menu
+                                Cepat</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.75rem;"><a href="{{ route('home') }}"
+                                        style="color: #6b7280; text-decoration: none; transition: color 0.3s;"
+                                        onmouseover="this.style.color='#ec4899'"
+                                        onmouseout="this.style.color='#6b7280'">Home</a></li>
+                                <li style="margin-bottom: 0.75rem;"><a href="{{ route('products.index') }}"
+                                        style="color: #6b7280; text-decoration: none; transition: color 0.3s;"
+                                        onmouseover="this.style.color='#ec4899'"
+                                        onmouseout="this.style.color='#6b7280'">Semua Menu</a></li>
+                                <li style="margin-bottom: 0.75rem;"><a href="#kategori"
+                                        style="color: #6b7280; text-decoration: none; transition: color 0.3s;"
+                                        onmouseover="this.style.color='#ec4899'"
+                                        onmouseout="this.style.color='#6b7280'">Kategori</a></li>
+                                <li style="margin-bottom: 0.75rem;"><a href="{{ route('cart.index') }}"
+                                        style="color: #6b7280; text-decoration: none; transition: color 0.3s;"
+                                        onmouseover="this.style.color='#ec4899'"
+                                        onmouseout="this.style.color='#6b7280'">Keranjang</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1.1rem; font-weight: 800; color: #1f2937; margin-bottom: 1.5rem;">
+                                Kontak Kami</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.75rem; color: #6b7280; display: flex; gap: 0.75rem;"><i
+                                        class="fas fa-map-marker-alt" style="color: #ec4899;"></i> Jl. Sakura No. 123,
+                                    Jakarta</li>
+                                <li style="margin-bottom: 0.75rem; color: #6b7280; display: flex; gap: 0.75rem;"><i
+                                        class="fas fa-phone" style="color: #ec4899;"></i> +62 812-3456-7890</li>
+                                <li style="margin-bottom: 0.75rem; color: #6b7280; display: flex; gap: 0.75rem;"><i
+                                        class="fas fa-envelope" style="color: #ec4899;"></i> info@dapursakura.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="border-top: 1px solid rgba(236, 72, 153, 0.1); padding-top: 2rem; text-align: center;">
+                        <p style="color: #9ca3af; font-size: 0.875rem;">&copy; {{ date('Y') }} Dapur Sakura. All rights
+                            reserved.</p>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
 

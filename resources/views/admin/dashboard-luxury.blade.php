@@ -14,6 +14,10 @@
                     <p class="page-subtitle">Selamat datang kembali di Dapur Sakura Admin Panel</p>
                 </div>
                 <div class="header-actions">
+                    <a href="{{ route('admin.dashboard.export-pdf') }}" class="btn btn-premium-pdf me-3">
+                        <i class="fas fa-file-pdf me-2"></i>
+                        Cetak Laporan
+                    </a>
                     <span class="current-date">{{ now()->format('d F Y') }}</span>
                 </div>
             </div>
@@ -168,7 +172,8 @@
                                                 <td><a href="{{ route('admin.orders.show', $order) }}"
                                                         class="text-primary">#{{ $order->id }}</a></td>
                                                 <td>{{ $order->recipient_name }}</td>
-                                                <td class="text-end">Rp {{ number_format($order->grand_total, 0, ',', '.') }}</td>
+                                                <td class="text-end">Rp {{ number_format($order->grand_total, 0, ',', '.') }}
+                                                </td>
                                                 <td>
                                                     <span class="badge badge-status-{{ $order->status }}">
                                                         {{ ucfirst($order->status) }}
@@ -321,6 +326,34 @@
             font-weight: 600;
             box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
             animation: fadeInRight 0.8s ease-out;
+        }
+
+        .btn-premium-pdf {
+            background: white;
+            color: #ec4899;
+            border: 2px solid #ec4899;
+            border-radius: 50px;
+            padding: 0.75rem 1.75rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.1);
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            margin-right: 1rem;
+            animation: fadeInRight 0.8s ease-out;
+        }
+
+        .btn-premium-pdf:hover {
+            background: #ec4899;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+        }
+
+        .btn-premium-pdf i {
+            font-size: 1.1rem;
         }
 
         @keyframes fadeInRight {

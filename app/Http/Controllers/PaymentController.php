@@ -144,6 +144,12 @@ class PaymentController extends Controller
 			'zone_multiplier' => $zoneMultiplier,
 		]);
 
+		// Add timeline entry for order placement
+		\App\Models\OrderTimeline::createStatusEntry($order, 'pending', [
+			'method' => 'checkout',
+			'notes' => 'Pesanan baru dibuat dari website'
+		], 'customer', auth()->user());
+
 		foreach ($items as $it) {
 			OrderItem::create([
 				'order_id' => $order->id,
@@ -254,9 +260,31 @@ class PaymentController extends Controller
 							$order->update(['payment_status' => 'pending', 'status' => 'pending']);
 						} else {
 							$order->update(['payment_status' => 'paid', 'status' => 'diproses']);
+
+							// Add timeline entry for payment
+							\App\Models\OrderTimeline::createStatusEntry($order, 'paid', [
+								'midtrans_order_id' => $midtransOrderId,
+								'status' => $transactionStatus
+							], 'system');
+
+							// Also add diproses timeline
+							\App\Models\OrderTimeline::createStatusEntry($order, 'diproses', [
+								'notes' => 'Otomatis diproses setelah pembayaran berhasil'
+							], 'system');
 						}
 					} else if ($transactionStatus == 'settlement') {
 						$order->update(['payment_status' => 'paid', 'status' => 'diproses']);
+
+						// Add timeline entry for payment
+						\App\Models\OrderTimeline::createStatusEntry($order, 'paid', [
+							'midtrans_order_id' => $midtransOrderId,
+							'status' => $transactionStatus
+						], 'system');
+
+						// Also add diproses timeline
+						\App\Models\OrderTimeline::createStatusEntry($order, 'diproses', [
+							'notes' => 'Otomatis diproses setelah pembayaran berhasil'
+						], 'system');
 					} else if ($transactionStatus == 'pending') {
 						$order->update(['payment_status' => 'pending', 'status' => 'pending']);
 					} else if ($transactionStatus == 'deny' || $transactionStatus == 'expire' || $transactionStatus == 'cancel') {
@@ -307,12 +335,36 @@ class PaymentController extends Controller
 					$order->update(['payment_status' => 'challenge']);
 				} else {
 					$order->update(['payment_status' => 'paid', 'status' => 'diproses']);
+
+					// Add timeline entry for payment
+					\App\Models\OrderTimeline::createStatusEntry($order, 'paid', [
+						'midtrans_order_id' => $orderId,
+						'status' => $transactionStatus
+					], 'system');
+
+					// Also add diproses timeline
+					\App\Models\OrderTimeline::createStatusEntry($order, 'diproses', [
+						'notes' => 'Otomatis diproses setelah pembayaran berhasil'
+					], 'system');
+
 					// Send tracking notification when payment is confirmed
 					$order->sendTrackingNotification();
 				}
 				break;
 			case 'settlement':
 				$order->update(['payment_status' => 'paid', 'status' => 'diproses']);
+
+				// Add timeline entry for payment
+				\App\Models\OrderTimeline::createStatusEntry($order, 'paid', [
+					'midtrans_order_id' => $orderId,
+					'status' => $transactionStatus
+				], 'system');
+
+				// Also add diproses timeline
+				\App\Models\OrderTimeline::createStatusEntry($order, 'diproses', [
+					'notes' => 'Otomatis diproses setelah pembayaran berhasil'
+				], 'system');
+
 				// Send tracking notification when payment is settled
 				$order->sendTrackingNotification();
 				break;

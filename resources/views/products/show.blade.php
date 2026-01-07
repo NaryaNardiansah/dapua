@@ -1154,12 +1154,6 @@
                     </div>
                 </div>
 
-                @if($product->description)
-                    <div class="product-description">
-                        {{ $product->description }}
-                    </div>
-                @endif
-
                 <div class="product-features">
                     <h3 class="features-title">Keunggulan Produk</h3>
                     <div class="feature-item">

@@ -625,161 +625,6 @@
             }
         }
 
-        /* Hero Section */
-        .hero-section {
-            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--secondary-pink) 100%);
-            padding: 4rem 0;
-            margin: -2rem -2rem 0 -2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-title-container {
-            text-align: center;
-            color: var(--pure-white);
-        }
-
-        .hero-title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-icon-wrapper {
-            position: relative;
-        }
-
-        .hero-icon {
-            font-size: 3rem;
-            animation: bounce 2s infinite;
-        }
-
-        .hero-title-text {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.5rem;
-        }
-
-        .hero-title-main {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1;
-        }
-
-        .hero-title-sub {
-            font-size: 1.2rem;
-            font-weight: 300;
-            opacity: 0.9;
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            font-weight: 300;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .hero-decorative-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-        }
-
-        .decorative-line {
-            position: absolute;
-            top: 50%;
-            left: 10%;
-            width: 3px;
-            height: 120px;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-50%) rotate(15deg);
-            border-radius: 2px;
-        }
-
-        .decorative-dots {
-            position: absolute;
-            top: 30%;
-            right: 15%;
-            width: 24px;
-            height: 24px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .decorative-circle {
-            position: absolute;
-            bottom: 20%;
-            left: 20%;
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            animation: rotate 10s linear infinite;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-10px);
-            }
-
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.2;
-            }
-
-            50% {
-                transform: scale(1.2);
-                opacity: 0.4;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 0.2;
-            }
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
 
         /* Status Alert */
         .status-alert {
@@ -1694,25 +1539,25 @@
             @endif
 
 
-                // Tooltip functionality
-                const tooltips = document.querySelectorAll('[data-tooltip]');
+                    // Tooltip functionality
+                    const tooltips = document.querySelectorAll('[data-tooltip]');
             tooltips.forEach(element => {
                 element.addEventListener('mouseenter', function () {
                     const tooltip = document.createElement('div');
                     tooltip.className = 'tooltip';
                     tooltip.textContent = this.getAttribute('data-tooltip');
                     tooltip.style.cssText = `
-                            position: absolute;
-                            background: #1f2937;
-                            color: white;
-                            padding: 0.5rem 0.75rem;
-                            border-radius: 6px;
-                            font-size: 0.75rem;
-                            z-index: 1000;
-                            pointer-events: none;
-                            opacity: 0;
-                            transition: opacity 0.3s ease;
-                        `;
+                                position: absolute;
+                                background: #1f2937;
+                                color: white;
+                                padding: 0.5rem 0.75rem;
+                                border-radius: 6px;
+                                font-size: 0.75rem;
+                                z-index: 1000;
+                                pointer-events: none;
+                                opacity: 0;
+                                transition: opacity 0.3s ease;
+                            `;
 
                     document.body.appendChild(tooltip);
 
@@ -1751,27 +1596,27 @@
                             // Show notification
                             const notification = document.createElement('div');
                             notification.style.cssText = `
-                                    position: fixed;
-                                    top: 20px;
-                                    right: 20px;
-                                    background: #25D366;
-                                    color: white;
-                                    padding: 1rem 1.5rem;
-                                    border-radius: 8px;
-                                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                                    z-index: 10000;
-                                    font-size: 0.875rem;
-                                    max-width: 300px;
-                                `;
+                                        position: fixed;
+                                        top: 20px;
+                                        right: 20px;
+                                        background: #25D366;
+                                        color: white;
+                                        padding: 1rem 1.5rem;
+                                        border-radius: 8px;
+                                        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                                        z-index: 10000;
+                                        font-size: 0.875rem;
+                                        max-width: 300px;
+                                    `;
                             notification.innerHTML = `
-                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                        <i class="fab fa-whatsapp" style="font-size: 1.25rem;"></i>
-                                        <div>
-                                            <div style="font-weight: 600;">WhatsApp Link</div>
-                                            <div style="font-size: 0.75rem; opacity: 0.9;">Klik untuk membuka WhatsApp</div>
+                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <i class="fab fa-whatsapp" style="font-size: 1.25rem;"></i>
+                                            <div>
+                                                <div style="font-weight: 600;">WhatsApp Link</div>
+                                                <div style="font-size: 0.75rem; opacity: 0.9;">Klik untuk membuka WhatsApp</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                `;
+                                    `;
 
                             notification.addEventListener('click', function () {
                                 window.open(whatsappUrl, '_blank', 'noopener,noreferrer');

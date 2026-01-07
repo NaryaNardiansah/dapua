@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends(auth()->check() ? (auth()->user()->isAdmin() ? 'layouts.admin' : (auth()->user()->isDriver() ? 'layouts.driver' : 'layouts.app')) : 'layouts.app')
 
 @section('title', 'Tracking Pesanan - Dapur Sakura')
 
@@ -1501,9 +1501,18 @@
                 showLoadingScreen('Kembali ke halaman sebelumnya...');
             }
 
-            // Redirect to my orders page if authenticated, else home
-            window.location.href = "{{ auth()->check() ? route('orders.index') : route('home') }}";
-        }
+            @auth
+                @if(auth()->user()->isAdmin())
+                    window.location.href = "{{ route('admin.orders.index') }}";
+                @elseif(auth()->user()->isDriver())
+                    window.location.href = "{{ route('driver.orders.index') }}";
+                @else
+                    window.location.href = "{{ route('orders.index') }}";
+                @endif
+            @else
+                window.location.href = "{{ route('home') }}";
+            @endauth
+            }
 
         // Cancel Modal Functions
         function showCancelModal() {

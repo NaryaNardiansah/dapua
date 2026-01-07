@@ -149,8 +149,9 @@
 <nav class="global-nav">
     <div class="nav-container">
         <a href="{{ route('home') }}" class="logo-section">
-            <div class="logo-icon">
-                <i class="fas fa-utensils"></i>
+            <div class="logo-icon" style="overflow: hidden;">
+                <img src="{{ asset('images/logo-sakura.jpg') }}" alt="Logo"
+                    style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div class="logo-text">{{ config('app.name', 'Dapur Sakura') }}</div>
         </a>

@@ -195,23 +195,15 @@
             </x-admin-content-card>
 
             <!-- Description -->
-            @if($product->description || $product->short_description)
+            @if($product->short_description)
             <x-admin-content-card 
                 title="Deskripsi Produk" 
                 icon="fas fa-align-left" 
                 :delay="400"
             >
-                @if($product->short_description)
                 <div class="short-description">
                     <p>{{ $product->short_description }}</p>
                 </div>
-                @endif
-                
-                @if($product->description)
-                <div class="full-description">
-                    {!! nl2br(e($product->description)) !!}
-                </div>
-                @endif
             </x-admin-content-card>
             @endif
 

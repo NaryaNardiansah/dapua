@@ -46,6 +46,7 @@ class Order extends Model
 		'longitude',
 		'distance_meters',
 		'order_code',
+		'preparation_started_at',
 	];
 
 	protected $casts = [
@@ -58,6 +59,7 @@ class Order extends Model
 		'status_history' => 'array',
 		'is_cancellable' => 'boolean',
 		'customer_notified' => 'boolean',
+		'preparation_started_at' => 'datetime',
 	];
 
 	protected static function booted(): void

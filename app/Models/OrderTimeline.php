@@ -50,7 +50,7 @@ class OrderTimeline extends Model
     public static function createStatusEntry(Order $order, string $status, array $metadata = [], string $triggeredBy = 'system', ?User $user = null): self
     {
         $statusConfig = self::getStatusConfig($status);
-        
+
         return self::create([
             'order_id' => $order->id,
             'status' => $status,
@@ -162,6 +162,13 @@ class OrderTimeline extends Model
                 'description' => 'Pesanan Anda telah dibatalkan.',
                 'icon' => 'fas fa-times-circle',
                 'color' => '#DC2626',
+                'visible_to_customer' => true,
+            ],
+            'paid' => [
+                'title' => 'Pembayaran Berhasil',
+                'description' => 'Pembayaran Anda telah berhasil dikonfirmasi. Pesanan akan segera kami siapkan.',
+                'icon' => 'fas fa-credit-card',
+                'color' => '#10B981',
                 'visible_to_customer' => true,
             ],
         ];

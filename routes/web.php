@@ -33,6 +33,7 @@ Route::get('/menu/{slug}', [ProductController::class, 'show'])->name('products.s
 // Simple session cart
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/update/{product}', [CartController::class, 'update'])->name('cart.update');
 Route::post('/cart/remove/{product}', [CartController::class, 'remove'])->name('cart.remove');
 
 // Checkout & Payment
@@ -117,17 +118,16 @@ Route::middleware(['auth', 'driver'])->prefix('driver')->name('driver.')->group(
 // Admin routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
 	Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+	Route::get('/dashboard/export-pdf', [AdminDashboardController::class, 'exportPdf'])->name('dashboard.export-pdf');
 
 	// Category routes
 	Route::get('categories/export', [AdminCategoryController::class, 'export'])->name('categories.export');
-	Route::get('categories-analytics', [AdminCategoryController::class, 'analytics'])->name('categories.analytics');
 	Route::post('categories/bulk-action', [AdminCategoryController::class, 'bulkAction'])->name('categories.bulk-action');
 	Route::post('categories/refresh-sales', [AdminCategoryController::class, 'refreshSales'])->name('categories.refresh-sales');
 	Route::resource('categories', AdminCategoryController::class);
 
 	// Product routes
 	Route::get('products/export', [AdminProductController::class, 'export'])->name('products.export');
-	Route::get('products-analytics', [AdminProductController::class, 'analytics'])->name('products.analytics');
 	Route::post('products/bulk-action', [AdminProductController::class, 'bulkAction'])->name('products.bulk-action');
 	Route::post('products/{product}/restore', [AdminProductController::class, 'restore'])->name('products.restore');
 	Route::post('products/{product}/duplicate', [AdminProductController::class, 'duplicate'])->name('products.duplicate');
@@ -168,7 +168,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 	Route::put('delivery/zones/{zone}', [AdminDeliveryController::class, 'updateZone'])->name('delivery.zones.update');
 	Route::delete('delivery/zones/{zone}', [AdminDeliveryController::class, 'deleteZone'])->name('delivery.zones.delete');
 
-	// Analytics
 
 	// Driver Management
 	Route::resource('drivers', AdminDriverController::class);

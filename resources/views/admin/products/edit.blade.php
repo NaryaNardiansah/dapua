@@ -166,20 +166,6 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Deskripsi Lengkap</label>
-                        <div class="editor-wrapper">
-                            <trix-editor input="description" 
-                                        class="form-editor"></trix-editor>
-                            <input type="hidden" 
-                                   id="description" 
-                                   name="description" 
-                                   value="{{ old('description', $product->description) }}" />
-                        </div>
-                        @error('description')
-                            <div class="form-error">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
                         <label class="form-label">Tags</label>
                         <div class="input-wrapper">
                             <input name="tags_input" 
@@ -1137,7 +1123,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Debug form data before submission
-    const form = document.querySelector('.luxury-form');
     if (form) {
         // Add debug button for testing
         const debugBtn = document.createElement('button');

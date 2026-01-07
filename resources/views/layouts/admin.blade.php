@@ -18,8 +18,11 @@
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- Universal Loading Screen Component -->
-    <x-loading-screen title="Dapur Sakura Admin" subtitle="Loading Admin Panel..." />
+    <!-- Only show loading screen once per session/login -->
+    @if(!session()->has('admin_splash_shown'))
+        <x-loading-screen title="Dapur Sakura Admin" subtitle="Menyiapkan Panel Admin..." />
+        @php session()->put('admin_splash_shown', true); @endphp
+    @endif
 
     <!-- Custom Admin Styles -->
     <style>
@@ -2869,7 +2872,8 @@
     <aside id="adminSidebar" class="admin-sidebar">
         <div class="sidebar-header">
             <div class="sidebar-logo">
-                <i class="fas fa-utensils"></i>
+                <img src="{{ asset('images/logo-sakura.jpg') }}" alt="Logo"
+                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
             </div>
             <div class="sidebar-brand">
                 <span class="sidebar-title">Dapur Sakura</span>
@@ -3042,6 +3046,7 @@
                         <span>Tracking</span>
                     </a>
                 </li>
+
 
                 <li class="sidebar-item" data-group="settings">
                     <a href="#" class="sidebar-link {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
@@ -3239,19 +3244,8 @@
             });
         });
 
-        // Show loader on link clicks
-        document.querySelectorAll('a[href]').forEach(link => {
-            link.addEventListener('click', function (e) {
-                // Only show loader for internal links
-                if (this.hostname === window.location.hostname) {
-                    const loader = document.getElementById('luxuryLoader');
-                    loader.classList.remove('hidden');
-                    loader.style.display = 'flex';
-                    loader.style.opacity = '1';
-                    loader.style.visibility = 'visible';
-                }
-            });
-        });
+        // Loader otomatis pada navigasi admin dinonaktifkan atas permintaan user
+        // Agar loading hanya muncul sekali saat pertama kali login
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -3283,11 +3277,13 @@
         // Form animations
         document.querySelectorAll('input, textarea, select').forEach(input => {
             input.addEventListener('focus', function () {
-                this.parentElement.classList.add('focused');
+                if (this.parentElement) {
+                    this.parentElement.classList.add('focused');
+                }
             });
 
             input.addEventListener('blur', function () {
-                if (!this.value) {
+                if (this.parentElement && !this.value) {
                     this.parentElement.classList.remove('focused');
                 }
             });

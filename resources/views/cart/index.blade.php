@@ -653,18 +653,53 @@
         .quantity-control {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            background: var(--light-pink);
-            padding: 0.625rem 1rem;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.25rem;
             border-radius: 12px;
+            border: 2px solid var(--light-pink);
         }
 
-        .quantity-value {
+        .qty-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: none;
+            background: var(--light-pink);
+            color: var(--primary-pink);
+            font-weight: 800;
             font-size: 1.125rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .qty-btn:hover {
+            background: var(--primary-pink);
+            color: white;
+        }
+
+        .qty-input {
+            width: 50px;
+            text-align: center;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
             font-weight: 800;
             color: var(--primary-pink);
-            min-width: 40px;
-            text-align: center;
+            -moz-appearance: textfield;
+        }
+
+        .qty-input::-webkit-outer-spin-button,
+        .qty-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .qty-input:focus {
+            outline: none;
         }
 
         .cart-item-actions {
@@ -1216,9 +1251,19 @@
                                             / item
                                         </div>
                                         <div class="cart-item-controls">
-                                            <div class="quantity-control">
-                                                <span class="quantity-value">Qty: {{ $row['quantity'] }}</span>
-                                            </div>
+                                            <form action="{{ route('cart.update', $row['product']) }}" method="POST" class="quantity-form">
+                                                @csrf
+                                                <div class="quantity-control">
+                                                    <button type="button" class="qty-btn" onclick="changeQuantity(this, -1)">
+                                                        <i class="fas fa-minus"></i>
+                                                    </button>
+                                                    <input type="number" name="quantity" value="{{ $row['quantity'] }}" min="1" 
+                                                        class="qty-input" onchange="this.form.submit()">
+                                                    <button type="button" class="qty-btn" onclick="changeQuantity(this, 1)">
+                                                        <i class="fas fa-plus"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
                                             <div class="cart-item-actions">
                                                 <form action="{{ route('cart.remove', $row['product']) }}" method="post"
                                                     style="display: inline;">
@@ -1372,6 +1417,18 @@
         function toggleProfileDropdown() {
             const dropdown = document.querySelector('.profile-dropdown');
             dropdown.classList.toggle('active');
+        }
+
+        // Quantity Change Function
+        function changeQuantity(btn, delta) {
+            const form = btn.closest('form');
+            const input = form.querySelector('.qty-input');
+            let newValue = parseInt(input.value) + delta;
+            
+            if (newValue >= 1) {
+                input.value = newValue;
+                form.submit();
+            }
         }
 
         // Close dropdown when clicking outside
