@@ -27,6 +27,7 @@ $app = Application::configure(basePath: dirname(__DIR__))
 // Force storage path to /tmp on Vercel
 if (isset($_SERVER['VERCEL_URL'])) {
     $app->useStoragePath('/tmp');
+    $app->setBootstrapContainerPath('/tmp');
 }
 
 return $app;
