@@ -6,7 +6,7 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-import './runtime-extra.js';
+
 
 // Import Trix editor
 import 'trix';
